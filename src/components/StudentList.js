@@ -13,14 +13,7 @@ function StudentList({ students }){
                         <StudentForm student={student}/>
                     </li>
                 ))}
-                <li>
-                    <button className="add-student-button" onClick={(() => console.log('add student was clicked'))}>
-                        <span>+</span>
-                    </button>
-                </li>
             </ul>
-            <NewStudentForm />
-
         </div>
     )
 

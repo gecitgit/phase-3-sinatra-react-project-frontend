@@ -19,7 +19,10 @@ function App() {
       <h1>Phase 3 Project</h1>
       <h3>Buckle up!</h3>
       <StudentList students={students}/>
-      <NewAssignmentform />
+      {/* <NewAssignmentform /> */}
+      <button className="add-student-button" onClick={(() => console.log('add student was clicked'))}>
+                        <span>+</span>
+      </button>
     </div>
     
   );
