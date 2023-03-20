@@ -30,12 +30,8 @@ function App() {
       ) : (
         <button onClick={handleNewStudentButton}>add student</button>
       )}
-      {/* <button className="add-student-button" onClick={handleAddStudent}>
-        <span>+</span>
-      </button> */}
     </div>
-    
-  );
+  )
 }
 
 export default App;
