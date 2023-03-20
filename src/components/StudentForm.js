@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import StudentCard from "./StudentCard";
 
 function StudentForm({ student }) {
-    // console.log("this is student in StudentForm", student);
+    const [showStudentInfo, setShowStudentInfo] = useState(false)
     const birthday = new Date(student.birthday).toLocaleDateString();
+
+    function handleStudentInfoClick() {
+        setShowStudentInfo(!showStudentInfo);
+    }
+
     return(
         <div className="student-form-student">
             <div className="student-form-info">
-                <p>{student.first_name} {student.last_name}</p>
-                <p>{student.age}</p>
-                <p>{birthday}</p>
-                <p>{student.academic_standing}</p>
-                
+                {showStudentInfo ? <><p>&nbsp;</p></> : (
+                    <>
+                        <p>{student.first_name} {student.last_name}</p>
+                        <p>{student.age}</p>
+                        <p>{birthday}</p>
+                        <p>{student.academic_standing}</p>
+                    </>
+                )}               
             </div>
             <div className="student-form-btns">
-                <button className="student-form-btns-indiv">See Student Info</button>
-                {/* see student will cause a popup to show all info */}
+                <button onClick={handleStudentInfoClick} className="student-form-btns-indiv">
+                    {showStudentInfo ? "Hide Student Info" : "Show Student Info"}
+                </button>
                 <button className="student-form-btns-indiv">Delete Student</button>
                 {/* deletes the student from the DB */}
             </div>
+            <div>
+                {showStudentInfo && <StudentCard student={student}/>}
+            </div>
+
         </div>
     )
 }
