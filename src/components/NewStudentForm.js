@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function NewStudentForm() {
     return(
@@ -8,7 +8,6 @@ function NewStudentForm() {
                 <label>Student Name: </label>
                 <input type="text"></input>
                 <button>Add New Student</button>
-                <button>cancel</button>
             </form>
         </div>
     )
