@@ -9,7 +9,7 @@ function StudentCard({ student }){
             <h1>{student.first_name} {student.last_name}</h1>
             <h2>Pronouns: {student.pronouns}</h2>
             <h4>Age: {student.age}</h4>
-            <h4>Birthday: {new Date(student.birthday).toLocaleDateString()}</h4>
+            <h4>Birthday: {new Date(student.birthday).toLocaleDateString('en-US', {timeZone: 'UTC'})}</h4>
             <img src={student.student_pic} alt={`${student.first_name} ${student.last_name}`}/>
             <p><strong>Hobby: </strong>{student.hobby}</p>
             <p><strong>Allergies: </strong>{student.allergies}</p>

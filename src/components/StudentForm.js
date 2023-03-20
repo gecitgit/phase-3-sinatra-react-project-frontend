@@ -3,7 +3,7 @@ import StudentCard from "./StudentCard";
 
 function StudentForm({ student }) {
     const [showStudentInfo, setShowStudentInfo] = useState(false)
-    const birthday = new Date(student.birthday).toLocaleDateString();
+    const birthday = new Date(student.birthday).toLocaleDateString('en-US', {timeZone: 'UTC'});
 
     function handleStudentInfoClick() {
         setShowStudentInfo(!showStudentInfo);
