@@ -9,6 +9,12 @@ function StudentForm({ student }) {
         setShowStudentInfo(!showStudentInfo);
     }
 
+    function handleStudentDelete() {
+        fetch(`http://localhost:9292/students/${student.id}`, {
+            method: "DELETE",
+        });
+    }
+
     return(
         <div className="student-form-student">
             <div className="student-form-info">
@@ -25,10 +31,10 @@ function StudentForm({ student }) {
                 <button onClick={handleStudentInfoClick} className="student-form-btns-indiv">
                     {showStudentInfo ? "Hide Student Info" : "Show Student Info"}
                 </button>
-                <button className="student-form-btns-indiv">Delete Student</button>
+                <button id={student.id} className="student-form-btns-indiv" onClick={handleStudentDelete}>Delete Student</button>
                 {/* deletes the student from the DB */}
             </div>
-            <div>
+            <div className="student-form-info">
                 {showStudentInfo && <StudentCard student={student}/>}
             </div>
 
