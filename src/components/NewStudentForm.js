@@ -139,6 +139,7 @@ function NewStudentForm({ onAddStudent, showNewStudentForm, setShowNewStudentFor
 
                     <div>
                         <button type="submit">Add student to roster</button>
+                        <button>cancel</button>
                     </div>
 
                 </fieldset>

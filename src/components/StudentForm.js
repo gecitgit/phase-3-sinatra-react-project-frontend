@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StudentCard from "./StudentCard";
 
-function StudentForm({ student }) {
+function StudentForm({ student, onStudentDelete, onStudentUpdate, onNewAssignment, onAssignmentDelete, onAssignmentEdit }) {
     const [showStudentInfo, setShowStudentInfo] = useState(false)
     const birthday = new Date(student.birthday).toLocaleDateString('en-US', {timeZone: 'UTC'});
 
@@ -13,7 +13,9 @@ function StudentForm({ student }) {
         fetch(`http://localhost:9292/students/${student.id}`, {
             method: "DELETE",
         });
+        onStudentDelete(student.id)
     }
+    console.log('this is what pstudentp looks like in studentform', student)
 
     return(
         <div className="student-form-student">
@@ -35,7 +37,7 @@ function StudentForm({ student }) {
                 {/* deletes the student from the DB */}
             </div>
             <div className="student-form-info">
-                {showStudentInfo && <StudentCard student={student}/>}
+                {showStudentInfo && <StudentCard student={student} onStudentUpdate={onStudentUpdate} onNewAssignment={onNewAssignment} onAssignmentDelete={onAssignmentDelete} onAssignmentEdit={onAssignmentEdit}/>}
             </div>
 
         </div>

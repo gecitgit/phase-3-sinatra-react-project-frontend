@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditAssignmentForm({ assignment, handleSaveChanges }) {
+function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit }) {
     const [assignmentFormData, setAssignmentFormData] = useState({
         course: assignment.course,
         assignment_type: assignment.assignment_type,
@@ -20,8 +20,17 @@ function EditAssignmentForm({ assignment, handleSaveChanges }) {
 
     function handleSubmit(event){
         event.preventDefault();
-        handleSaveChanges(assignmentFormData);
-        console.log('this is assignmentFormData', assignmentFormData)
+
+        fetch(`http://localhost:9292/students/${assignment.student_id}/assignments/${assignment.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(assignmentFormData)
+        })
+            .then((response) => response.json())
+            .then((updatedAssignment) => onAssignmentEdit(updatedAssignment));
+            setEditing(!editing);
     }
 
     return (
@@ -49,9 +58,10 @@ function EditAssignmentForm({ assignment, handleSaveChanges }) {
                             type="text"
                             id="assignmenttype"
                             name="assignment_type"
-                            defaultValue={assignment.assignment_type}
+                            value={assignment.assignment_type}
                             onChange={handleChange}
                         >
+                            <option disabled value="">Choose from the list..</option>
                             <option>Test</option>
                             <option>Quiz</option>
                             <option>Lab</option>
@@ -81,6 +91,7 @@ function EditAssignmentForm({ assignment, handleSaveChanges }) {
                             value={assignmentFormData.submitted}
                             onChange={handleChange}
                         >
+                            <option disabled value="">Choose...</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -126,6 +137,7 @@ function EditAssignmentForm({ assignment, handleSaveChanges }) {
 
                     <div>
                         <button type="submit">Save Changes</button>
+                        <button onClick={() => (setEditing(!editing))}>cancel</button>
                     </div>
 
 

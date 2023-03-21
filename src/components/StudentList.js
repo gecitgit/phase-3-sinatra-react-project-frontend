@@ -2,16 +2,25 @@ import React, { useState } from "react";
 import StudentForm from "./StudentForm";
 import StudentListHeader from "./StudentListHeader";
 
-function StudentList({ students }){
+function StudentList({ students, onStudentDelete, onStudentUpdate, onNewAssignment, onAssignmentDelete, onAssignmentEdit }){
+
+    const studentsCopy = [...students]
 
 
     return(
         <div className="student-list-container">
             <StudentListHeader />
             <ul>
-                {students.map((student) => (
+                {studentsCopy.map((student) => (
                     <li key={student.id}>
-                        <StudentForm student={student}/>
+                        <StudentForm 
+                            student={student}  
+                            onStudentDelete={onStudentDelete} 
+                            onStudentUpdate={onStudentUpdate} 
+                            onNewAssignment={onNewAssignment}
+                            onAssignmentDelete={onAssignmentDelete}
+                            onAssignmentEdit={onAssignmentEdit}
+                        />
                     </li>                    
                 ))}
             </ul>

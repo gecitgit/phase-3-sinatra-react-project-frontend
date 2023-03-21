@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import AssignmentRow from "./AssignmentRow";
+import NewAssignmentForm from "./NewAssignmentForm";
 
-function AssignmentList({ assignments }) {
+function AssignmentList({ student, onStudentUpdate, onNewAssignment, onAssignmentDelete, onAssignmentEdit }) {
+    const [makeNew, setMakeNew] = useState(false);   
+
+    function toggleMakeNew(e) {
+        e.preventDefault();
+        setMakeNew(!makeNew)
+    }
+
+    const assignmentsCopy = [...student.assignments];
+
     return (
         <div>
             <ul>
-                {assignments.map((assignment) => (
-                <AssignmentRow key={assignment.id} assignment={assignment} />
+                {assignmentsCopy.map((assignment) => (
+                <AssignmentRow key={assignment.id} assignment={assignment} onAssignmentDelete={onAssignmentDelete} onAssignmentEdit={onAssignmentEdit}/>
                 ))}
+                {makeNew ? (
+                    <>
+                    <button onClick={toggleMakeNew}>cancel</button>
+                    <NewAssignmentForm 
+                        student={student}
+                        onStudentUpdate={onStudentUpdate}
+                        makeNew={makeNew}
+                        setMakeNew={setMakeNew}
+                        onNewAssignment={onNewAssignment}    
+                    />
+                    </>
+                ) : (
+                    <button onClick={toggleMakeNew}>+ Create an assignment</button>
+                )}
             </ul>
         </div>
     )
