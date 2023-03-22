@@ -1,15 +1,19 @@
 body {
-  background-color: #eae7dc;
+  background-color: #050517;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneve, Verdana, sans-serif
 }
 
 #root {
-  background: #EAE7DC;
-  color: #575752;
+  background: #050517;
+  color: #cdcdc7;
   height: 100vh;
   margin-left: 25px;
   margin-right: 25px;
+}
+.App {
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 p, h1, h2 {
@@ -23,39 +27,86 @@ ul, li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0;
 }
 
 .student-list-container {
-  background-color: orange;
+  background-color: #050517;
 }
+
 .student-form-student {
-  background-color: rgb(241, 189, 241);
-  border: 2px black solid;
-  margin-bottom: 10px;
+  background-color: #808782;
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+  margin-top: 4px;
   display: flex;
   flex-direction: column;
+  color: #050517;
 }
 .student-form-info {
-  background-color: rgb(211, 240, 211);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  border: solid 1px orange;
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.student-form-info p {
+  width: 25%;
+  font-size: 16px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-family: inherit;
+  letter-spacing: .1em;
+  font-weight: bolder;
 }
 
 .student-list-header {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  text-align: center;
+  border-top: black 1px solid;
+  border-bottom: black 1px solid;
 }
+
+.student-list-header span {
+  background-color: #b0413e;
+  width: 25%;
+  font-weight: bolder;
+  font-size: 20px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  letter-spacing: .1em;
+  font-weight: bolder;
+}
+
 .student-form-btns {
   display: flex;
   justify-content: center;
+  margin-bottom: 4px;
+  cursor: pointer;
 }
 .student-form-btns-indiv {
-  padding: 10px;
+  padding: 5px 25px 5px 25px;
   margin-left: 10px;
   margin-right: 10px;
+  border: 0;
+  font-family: inherit;
+  letter-spacing: .25em;
+  font-weight: bolder;
+  color: #050517
+}
+#sfb-toggle.student-form-btns-indiv {
+  background-color: #6494AA;
+  border: 1px solid #050517;
+}
+
+#sfb-delete.student-form-btns-indiv {
+  background-color: #b0413e;
+  border: 1px solid #050517;
+
 }
 
 .add-student-button {
@@ -76,14 +127,15 @@ ul, li {
 
 /* STUDENT CARD STYLING BEGINS */
 .student-card {
-  background-color: white;
+  background-color: #F6c28B;
   border-radius: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  margin-left: 15px;
+  margin-right: 15px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
 }
 
 .student-card-details-text {
@@ -92,28 +144,36 @@ ul, li {
   justify-content: space-evenly;
 }
 
+.student-card-details-text label {
+  font-size: 16px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .student-card h4{
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 24px;
+  text-decoration-line: underline;
+}
+
+.student-card h1{
+  text-decoration-line: underline;
+  font-size: 36px;
 }
 
 .student-card img {
+  max-height: 300px;
   width: auto;
-  height: auto;
   border-radius: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .student-card-details {
   display: flex;
-  width: 75%;
   flex-direction: row;
-  justify-content: space-around;
-  border: 2px black solid;
 }
 
-.student-card button{
+/* .student-card button{
   font-size: 1rem;
   background-color: #4caf50;  
   color: white;
@@ -121,15 +181,41 @@ ul, li {
   border-radius: 5px;
   padding: 10px 20px;
   margin-top: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
   border: black 2px solid
+} */
+
+.student-card-pic-box {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  flex-direction: column;
+}
+
+.student-card-details-text {
+  width:50%;
+}
+.student-card-details-text p {
+  width: auto;
 }
 
 .student-card-details-text-personal{
-  background-color: lightcoral;
+  color: #050517;
+  /* background-color: rgb(91, 84, 84); */
 }
 .student-card-emergency{
-  background-color: lightpink;
+  color: #050517;
+
+  /* background-color: rgb(122, 115, 116); */
+}
+
+.student-card-pretty{
+  border: 1px solid #050517;
+  background-color: #6494aa;
 }
 
 /* STUDENT CARD STYLING ENDS */
@@ -140,6 +226,129 @@ ul, li {
 }
 
 .assignment-row-container {
-  border: purple 2px solid;
+  border: #6494AA 2px solid;
   margin-bottom: 10px;
+}
+
+.edit-student-label {
+  font-size: 36px;
+  font-weight: bolder;
+  padding: 0;
+}
+/* 
+.edit-student-name-inputs {
+  font-size: 36px;
+  width: auto;
+} */
+
+.cancel-btns {
+  padding: 5px 25px 5px 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 0;
+  font-family: inherit;
+  letter-spacing: .25em;
+  font-weight: bolder;
+  background-color: #F6c28B;
+  max-width: 300px;
+  align-self: center;
+  border: 1px solid #050517;
+  margin-top: 5px; 
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.modify-btns {
+  background-color: #6494AA;
+  padding: 5px 25px 5px 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 0;
+  font-family: inherit;
+  letter-spacing: .25em;
+  font-weight: bolder;
+  max-width: 300px;
+  align-self: center;
+  border: 1px solid #050517;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+
+}
+
+.delete-btns {
+  background-color: #b0413e;
+  padding: 5px 25px 5px 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 0;
+  font-family: inherit;
+  letter-spacing: .25em;
+  font-weight: bolder;
+  max-width: 300px;
+  align-self: center;
+  border: 1px solid #050517;
+  cursor:pointer;
+
+}
+
+.edit-assignment-form {
+  font-size: 16px;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.new-student-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  padding-bottom: 50px;
+}
+
+.new-student-container form.button {
+  display: flex;
+}
+
+#newStudent.modify-btns {
+  margin-right: 30%;
+  margin-left: 30%;
+}
+
+.modify-btns:hover, .cancel-btns:hover, .delete-btns.hover {
+  background-color: #050517;
+  color: #b0413e;
+}
+
+.title-page-text {
+  padding-top: 30px;
+  display: flex;
+  padding-bottom: 30px;
+  justify-content: space-evenly;
+}
+
+.title-page-text h1 {
+  border-top: 2px solid #b0413e;
+  border-bottom: 2px solid #F6c28B;
+  font-size: 72px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.title-page-text h3 {
+  border-top: 2px solid #F6c28B;
+  border-bottom: 2px solid #b0413e;
+  font-size: 26px;
+  display: flex;
+}
+
+#big-title {
+  width: 30%;
+}
+
+#title-blurb {
+  width: 60%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
