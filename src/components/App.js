@@ -1,6 +1,4 @@
 import React, { useEffect , useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import NewAssignmentform from "./NewAssignmentForm";
 import NewStudentForm from "./NewStudentForm";
 import StudentList from "./StudentList";
 
@@ -72,7 +70,6 @@ function App() {
 
   //This function is for editing an already existing assignment
   function handleAssignmentEdit(updatedAssignment){
-    // console.log("this is the editedAssignment from App: ", assignmentFormData)
     const updatedAssignmentId = updatedAssignment.id;
     const updatedAssignmentOwner = updatedAssignment.student_id;
 
@@ -115,8 +112,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Phase 3 Project</h1>
-      <h3>Buckle up!</h3>
+      <div className="title-page-text">
+        <h1 id="big-title">Mr T's Gradebook</h1>
+        <h3 id="title-blurb">Use this tool to help keep track of all of your student assignments.  Click the 'show student info' button to see all of their existing assignments or to add a new one.  Added a new student to the roster? No problem! Bring them onboard with the button at the bottom of the page to add them to the party.</h3>
+      </div>
+      
       <StudentList 
         students={students} 
         onStudentDelete={handleDeleteStudent} 
@@ -125,9 +125,10 @@ function App() {
         onAssignmentDelete={handleAssignmentDelete}
         onAssignmentEdit={handleAssignmentEdit}
       />
-      {showNewStudentForm ? (
+      <div className="new-student-container">
+        {showNewStudentForm ? (
         <>
-        <button onClick={handleNewStudentButton}>cancel new student</button>
+        <button onClick={handleNewStudentButton} className="cancel-btns">cancel new student</button>
         <NewStudentForm 
           onAddStudent={handleAddStudent}
           showNewStudentForm={showNewStudentForm}
@@ -135,8 +136,10 @@ function App() {
         />
         </>
       ) : (
-        <button onClick={handleNewStudentButton}>add student</button>
+        <button onClick={handleNewStudentButton} className="modify-btns">add student</button>
       )}
+      </div>
+      
     </div>
   )
 }

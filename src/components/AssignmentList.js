@@ -20,7 +20,7 @@ function AssignmentList({ student, onStudentUpdate, onNewAssignment, onAssignmen
                 ))}
                 {makeNew ? (
                     <>
-                    <button onClick={toggleMakeNew}>cancel</button>
+                    <button onClick={toggleMakeNew} className="cancel-btns">cancel</button>
                     <NewAssignmentForm 
                         student={student}
                         onStudentUpdate={onStudentUpdate}
@@ -30,7 +30,7 @@ function AssignmentList({ student, onStudentUpdate, onNewAssignment, onAssignmen
                     />
                     </>
                 ) : (
-                    <button onClick={toggleMakeNew}>+ Create an assignment</button>
+                    <button onClick={toggleMakeNew} className="modify-btns">+ Create an assignment</button>
                 )}
             </ul>
         </div>

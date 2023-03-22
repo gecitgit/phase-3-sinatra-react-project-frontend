@@ -6,7 +6,7 @@ function StudentListHeader() {
             <span>Student Name</span>
             <span>Age</span>
             <span>Birthday</span>
-            <span>Academic Standing</span>
+            <span>Academic Status</span>
         </div>
     )
 }

@@ -17,7 +17,6 @@ function NewStudentForm({ onAddStudent, showNewStudentForm, setShowNewStudentFor
     })
 
     function handleChange(event) {
-        console.log("this is being change: ", event.target.value)
         setFormData({
             ...formData,
             [event.target.name]: event.target.value,
@@ -26,7 +25,6 @@ function NewStudentForm({ onAddStudent, showNewStudentForm, setShowNewStudentFor
 
     function handleStudentSubmit(e) {
         e.preventDefault();
-        console.log('student form was submitted', formData)
         fetch("http://localhost:9292/students", {
             method: "POST",
             headers: {
@@ -56,7 +54,6 @@ function NewStudentForm({ onAddStudent, showNewStudentForm, setShowNewStudentFor
 
     return(
         <div>
-            <h1>new student from</h1>
             <form autoComplete="off" onSubmit={handleStudentSubmit}>
                 <fieldset>
                     <legend>Add a new student to your roster</legend>
@@ -138,8 +135,7 @@ function NewStudentForm({ onAddStudent, showNewStudentForm, setShowNewStudentFor
                     </div>
 
                     <div>
-                        <button type="submit">Add student to roster</button>
-                        <button>cancel</button>
+                        <button type="submit" className="modify-btns" id="newStudent">Add student to roster</button>
                     </div>
 
                 </fieldset>

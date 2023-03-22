@@ -22,11 +22,8 @@ function StudentCard({ student, onStudentUpdate, onNewAssignment, onAssignmentDe
 
 
     function handleEditStudentClick(){
-        console.log("edit student was pressed")
         setStudentEditFormData(studentEditFormData);
-        console.log('this is the updated student info, ', studentEditFormData)        
         setIsEditing(!isEditing);
-        console.log('this is what uSTUDENTu looks like in StudentCard: ', student)
     }
 
     function handleChange(event) {
@@ -37,10 +34,7 @@ function StudentCard({ student, onStudentUpdate, onNewAssignment, onAssignmentDe
     }
 
     function handleEditStudentSubmit(event){
-        console.log('SUBMIT student was pressed')
-        console.log('here is studentEditFormData', studentEditFormData)
         event.preventDefault();
-        // setStudentEditFormData(studentEditFormData);
         setIsEditing(!isEditing);
 
         fetch(`http://localhost:9292/students/${student.id}`, {
@@ -55,19 +49,19 @@ function StudentCard({ student, onStudentUpdate, onNewAssignment, onAssignmentDe
     }
 
 
-    // console.log('this is assignments:', student.assignments)
 
     return (
         <div className="student-card">
             {isEditing ? (
+                <div className="student-card-pretty">
                 <form>
-                    <label>Name: </label>
-                    <input type="text" id="first_name" name="first_name" value={studentEditFormData.first_name} onChange={handleChange}/>
-                    <input type="text" id="last_name" name="last_name" value={studentEditFormData.last_name} onChange={handleChange}/>
+                    <label className="edit-student-label">Name: </label>
+                    <input style={{ fontSize: "32px", textAlign: "center", padding: "0px", margin: "0px"}} size={studentEditFormData.first_name.length-2} type="text" id="first_name" name="first_name" value={studentEditFormData.first_name} onChange={handleChange}/>
+                    <input style={{ fontSize: "32px", textAlign: "center", padding: "0px", margin: "0px"}} size={studentEditFormData.last_name.length-2} type="text" id="last_name" name="last_name" value={studentEditFormData.last_name} onChange={handleChange}/>
                     <div className="student-card-details">
-                        <div className="student-card-pic-container">
+                        <div className="student-card-pic-box">
                             <img src={studentEditFormData.student_pic} alt={`${studentEditFormData.first_name} ${studentEditFormData.last_name}`}/>
-                            <input type="text" value={studentEditFormData.student_pic} onChange={handleChange}/>
+                            <input type="text" id="student_pic" name="student_pic" value={studentEditFormData.student_pic} size={studentEditFormData.student_pic.length} style={{ marginTop: "5px" }} onChange={handleChange}/>
                         </div>                        
                             <div className="student-card-details-text">
                                 <div className="student-card-details-text-personal">
@@ -127,12 +121,16 @@ function StudentCard({ student, onStudentUpdate, onNewAssignment, onAssignmentDe
                             </div>
                     </div>
                 </form>
+                </div>
             ) : (
                 
-                <div className="student-card">
+                <div className="student-card-pretty">
                     <h1>{student.first_name} {student.last_name}</h1>
                     <div className="student-card-details">
-                        <img src={student.student_pic} alt={`${student.first_name} ${student.last_name}`}/>
+                        <div className="student-card-pic-box">
+                            <img src={student.student_pic} alt={`${student.first_name} ${student.last_name}`}/>
+                            <p>{student.first_name}'s selfie!</p>
+                        </div>                        
                         <div className="student-card-details-text">
                             <div className="student-card-details-text-personal">
                                 <h4>Student Details</h4>
@@ -158,49 +156,16 @@ function StudentCard({ student, onStudentUpdate, onNewAssignment, onAssignmentDe
         
         {isEditing ? (
             <>
-                <button onClick={handleEditStudentSubmit}>Save Changes</button>
-                <button onClick={handleEditStudentClick}>cancel</button>
+                <button onClick={handleEditStudentClick} className="cancel-btns">cancel</button>
+                <button onClick={handleEditStudentSubmit} className="modify-btns">Save Changes</button>
             </>
             
         ) : (
-            <button onClick={handleEditStudentClick}>Edit Student</button>
+            <button onClick={handleEditStudentClick} className="modify-btns">Edit Student</button>
         )}
         <AssignmentList student={student} onStudentUpdate={onStudentUpdate} onNewAssignment={onNewAssignment} onAssignmentDelete={onAssignmentDelete} onAssignmentEdit={onAssignmentEdit} />
         </div>
     )
-
-
-
-    // return (
-    //     <div className="student-card">
-    //         <h1>{student.first_name} {student.last_name}</h1>
-    //         <div className="student-card-details">
-    //             <img src={student.student_pic} alt={`${student.first_name} ${student.last_name}`}/>
-    //             <div className="student-card-details-text">
-    //                 <div className="student-card-details-text-personal">
-    //                     <h4>Student Details</h4>
-    //                     <p><strong>Pronouns: </strong>{student.pronouns}</p>
-    //                     <p><strong>Age: </strong>{student.age}</p>
-    //                     <p><strong>Birthday: </strong>{new Date(student.birthday).toLocaleDateString('en-US', {timeZone: 'UTC'})}</p>
-    //                     <p><strong>Hobby: </strong>{student.hobby}</p>
-    //                     <p><strong>Allergies: </strong>{student.allergies}</p>
-    //                     <p><strong>Academic Standing: </strong>{student.academic_standing}</p>
-    //                 </div>
-    //                 <div className="student-card-emergency">
-    //                     <h4>Emergency Contact Info</h4>
-    //                     <p><strong>Name: </strong>{student.e_contact_name}</p>
-    //                     <p><strong>Relationship: </strong>{student.e_contact_relationship}</p>
-    //                     <p><strong>Phone Number: </strong>{student.e_contact_number}</p>
-    //                 </div>
-    //             </div>
-                
-    //         </div>
-            
-            
-    //         <button onClick={handleEditStudentClick}>Edit Student</button>
-    //         <AssignmentList assignments={student.assignments}/>
-    //     </div>
-    // )
 }
 
 export default StudentCard;

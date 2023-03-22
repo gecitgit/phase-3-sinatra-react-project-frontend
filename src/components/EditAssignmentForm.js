@@ -35,14 +35,14 @@ function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit 
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="edit-assignment-form">
                 <fieldset>
                     <legend>
-                    Edit Assignment
+                    <strong>Edit the Assignment</strong>
                     </legend>
 
                     <div>
-                        <label htmlFor="coursename">Course: </label>
+                        <label htmlFor="coursename"><strong>Course: </strong></label>
                         <input 
                             type="text"
                             id="coursename"
@@ -53,12 +53,12 @@ function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit 
                     </div>
                     
                     <div>
-                        <label htmlFor="assignmenttype">Assignment Type: </label>
+                        <label htmlFor="assignmenttype"><strong>Assignment Type: </strong></label>
                         <select 
                             type="text"
                             id="assignmenttype"
                             name="assignment_type"
-                            value={assignment.assignment_type}
+                            value={assignmentFormData.assignment_type}
                             onChange={handleChange}
                         >
                             <option disabled value="">Choose from the list..</option>
@@ -72,7 +72,7 @@ function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit 
                     </div>
 
                     <div>
-                        <label htmlFor="duedatetime">Due Date: </label>
+                        <label htmlFor="duedatetime"><strong>Due Date: </strong></label>
                         <input
                             type="date"
                             id="duedatetime"
@@ -83,7 +83,7 @@ function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit 
                     </div>
 
                     <div>
-                        <label>Was the work submitted? </label>
+                        <label><strong>Was the work submitted? </strong></label>
                         <select 
                             required
                             id="submitted"
@@ -98,7 +98,7 @@ function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit 
                     </div>
 
                     <div>
-                        <label>Was the work on time? </label>
+                        <label><strong>Was the work on time? </strong></label>
                         <select
                             required
                             id="on_time"
@@ -112,7 +112,7 @@ function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit 
                     </div>
 
                     <div>
-                        <label>Assignment score: </label>
+                        <label><strong>Assignment score: </strong></label>
                         <input
                             required
                             type="number"
@@ -124,20 +124,20 @@ function EditAssignmentForm({ assignment, editing, setEditing, onAssignmentEdit 
                     </div>
 
                     <div>
-                        <label>Any additional notes: </label>
-                        <textarea 
+                        <label><strong>Any additional notes: </strong></label>
+                        <input
+                            type="text"
+                            id="notes"
                             name="notes"
                             placeholder="Add some feedback!"
-                            rows="4"
-                            cols="75"
                             value={assignmentFormData.notes}
                             onChange={handleChange}
                         />
                     </div>
 
                     <div>
-                        <button type="submit">Save Changes</button>
-                        <button onClick={() => (setEditing(!editing))}>cancel</button>
+                        <button className="modify-btns" type="submit">Save Changes</button>
+                        <button className="cancel-btns" onClick={() => (setEditing(!editing))}>cancel</button>
                     </div>
 
 

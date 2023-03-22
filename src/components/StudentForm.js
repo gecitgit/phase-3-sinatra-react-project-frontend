@@ -15,12 +15,11 @@ function StudentForm({ student, onStudentDelete, onStudentUpdate, onNewAssignmen
         });
         onStudentDelete(student.id)
     }
-    console.log('this is what pstudentp looks like in studentform', student)
 
     return(
         <div className="student-form-student">
             <div className="student-form-info">
-                {showStudentInfo ? <><p>&nbsp;</p></> : (
+                {showStudentInfo ? <><p></p></> : (
                     <>
                         <p>{student.first_name} {student.last_name}</p>
                         <p>{student.age}</p>
@@ -30,10 +29,10 @@ function StudentForm({ student, onStudentDelete, onStudentUpdate, onNewAssignmen
                 )}               
             </div>
             <div className="student-form-btns">
-                <button onClick={handleStudentInfoClick} className="student-form-btns-indiv">
+                <button onClick={handleStudentInfoClick} className="student-form-btns-indiv" id="sfb-toggle">
                     {showStudentInfo ? "Hide Student Info" : "Show Student Info"}
                 </button>
-                <button id={student.id} className="student-form-btns-indiv" onClick={handleStudentDelete}>Delete Student</button>
+                <button id="sfb-delete" className="student-form-btns-indiv" onClick={handleStudentDelete}>Delete Student</button>
                 {/* deletes the student from the DB */}
             </div>
             <div className="student-form-info">

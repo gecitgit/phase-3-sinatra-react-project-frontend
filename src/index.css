@@ -120,9 +120,6 @@ ul, li {
   display: flex;
 }
 
-/* .student-form-card-container{
-  display: flex;
-} */
 
 
 /* STUDENT CARD STYLING BEGINS */
@@ -173,18 +170,7 @@ ul, li {
   flex-direction: row;
 }
 
-/* .student-card button{
-  font-size: 1rem;
-  background-color: #4caf50;  
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  border: black 2px solid
-} */
+
 
 .student-card-pic-box {
   width: 50%;
@@ -205,12 +191,12 @@ ul, li {
 
 .student-card-details-text-personal{
   color: #050517;
-  /* background-color: rgb(91, 84, 84); */
+
 }
 .student-card-emergency{
   color: #050517;
 
-  /* background-color: rgb(122, 115, 116); */
+
 }
 
 .student-card-pretty{
@@ -235,11 +221,6 @@ ul, li {
   font-weight: bolder;
   padding: 0;
 }
-/* 
-.edit-student-name-inputs {
-  font-size: 36px;
-  width: auto;
-} */
 
 .cancel-btns {
   padding: 5px 25px 5px 25px;
